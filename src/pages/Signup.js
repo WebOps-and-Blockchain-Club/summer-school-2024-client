@@ -1,15 +1,26 @@
 import { useForm } from "react-hook-form"
 import { DevTool } from "@hookform/devtools";
 import { Link } from 'react-router-dom'
-// import { useNavigate } from 'react-router-dom'
-// import React,{useEffect} from "react";
+import { useNavigate } from 'react-router-dom'
+import React,{useEffect,useState} from "react";
 
 export default function Signup(props) {
+    const navigate=useNavigate();
+    const [Status,setStatus]=useState(null)
     const { register, control, handleSubmit,formState} = useForm();
     const { errors }= formState
+
+    useEffect(() => {
+        
+        if(Status==="Successful"){
+            navigate('/login')
+        }
+    }, [Status,navigate])
+    
     const onSubmit = (data) => {
         console.log( data)  
         props.showAlert("Account creation successful","good")
+        setStatus("Successful")
     }
 
     return (

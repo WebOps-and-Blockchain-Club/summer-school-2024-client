@@ -13,10 +13,10 @@ export default function Alert(props) {
   if(props.alert.type==="good"){
   return (
     <>
-    <div  style={{height:'25px'}} className='bg-[#111827]'>
+    <div  style={{height:'30pxpx'}} className='bg-[#111827]'>
     {props.alert && <div>
         <div className={`alert bg-[#93f0b5] flex justify-center`} role="alert">
-        <strong className='text-[#174428]'>{props.alert.msg}</strong>
+        <strong className='text-[#174428] xl'>{props.alert.msg}</strong>
         </div>
     </div>}
     </div>
