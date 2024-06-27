@@ -103,7 +103,10 @@ export default function Signup(props) {
                     required=""
                     {...register("username", {
                       required: "requires Username",
-                      minLength: 4,
+                      minLength: {value:8,message:" length 8 only"
+                    },
+                    maxLength: {value:8,message:" length 8 only"
+                    }
                     })}
                   />
                   <p className="text-red-500">{errors.username?.message}</p>
@@ -123,7 +126,8 @@ export default function Signup(props) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     {...register("password", {
                       required: "requires password",
-                      minLength: 8,
+                       minLength:{value:8,message:"Min length 8"
+                    },
                     })}
                   />
                   <p className="text-red-500">{errors.password?.message}</p>
