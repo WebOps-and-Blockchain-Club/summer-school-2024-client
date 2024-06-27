@@ -1,13 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import {  useNavigate,Navigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
+  const redirect=()=>
+    navigate("/product")
+
+  // const token = localStorage.getItem("token");
+  // token&&(
+  //   <Navigate to="/login" replace={true} />
+  // )
 
   useEffect(() => {
     async function fetchProducts() {
       const token = localStorage.getItem("token");
-
       const res = await axios.get(
         `${process.env.REACT_APP_BACKEND_BASE_URL}/products`,
         {
@@ -23,6 +31,17 @@ const Home = () => {
 
     fetchProducts();
   }, []);
+
+  //checking user info
+  // useEffect(() => {
+  //   async function userInfo() {
+  //     const rep = await axios.get(
+  //       `${process.env.REACT_APP_BACKEND_BASE_URL}/user`,);
+  //     console.log(rep.data);    
+  //   }
+
+  //   userInfo();
+  // }, []);
 
   return (
     <div className="container mx-auto py-8">
@@ -49,7 +68,11 @@ const Home = () => {
             <p className="text-gray-800 font-bold mb-2">
               <strong>Selling Price:</strong> ${product.sellingPrice}
             </p>
-            <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300">
+            <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300"onClick={()=>{
+              console.log(product);
+              localStorage.setItem("product", product.productId);
+              redirect()
+              }}>
               Buy Now
             </button>
           </div>

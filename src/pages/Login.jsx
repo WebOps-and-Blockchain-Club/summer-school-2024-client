@@ -12,6 +12,7 @@ export default function Login(props) {
 
   const onSubmit = async (data) => {
     try {
+      console.log(data,process.env.REACT_APP_BACKEND_BASE_URL );
       const res = await axios.post(
         `${process.env.REACT_APP_BACKEND_BASE_URL}/login`,
         data
