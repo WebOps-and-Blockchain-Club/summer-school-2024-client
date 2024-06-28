@@ -4,6 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 // import { useNavigate } from 'react-router-dom'
 // import React,{useEffect} from "react";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+const eye = <FontAwesomeIcon icon={faEye} />;
+
 
 export default function Login(props) {
   const { register, control, handleSubmit, formState } = useForm();
@@ -14,7 +19,7 @@ export default function Login(props) {
     try {
       console.log(data,process.env.REACT_APP_BACKEND_BASE_URL );
       const res = await axios.post(
-        `${process.env.REACT_APP_BACKEND_BASE_URL}/login`,
+        `${process.env.REACT_APP_BACKEND_BASE_URL}/signin`,
         data
       );
 
@@ -37,6 +42,12 @@ export default function Login(props) {
         "bad"
       );
     }
+  };
+
+
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
   };
 
   return (
@@ -85,7 +96,7 @@ export default function Login(props) {
                     placeholder="XXXXXXXX"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
-                    {...register("username", {
+                    {...register("rollNo", {
                       required: "requires Username",
                       minLength: {value:8,message:" length 8 only"
                     },
@@ -97,13 +108,13 @@ export default function Login(props) {
                 </div>
                 <div>
                   <label
-                    htmlFor="confirm-password"
+                    htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Password
                   </label>
                   <input
-                    type="password"
+                    type={passwordShown ? "text" : "password"}
                     name="password"
                     id="password"
                     placeholder="••••••••"
@@ -114,6 +125,7 @@ export default function Login(props) {
                     },
                     })}
                   />
+                  <i onClick={togglePasswordVisiblity} className="dark:invert">{eye}</i>{" "}
                   <p className="text-red-500">{errors.password?.message}</p>
                 </div>
                 <div className="flex items-start"></div>

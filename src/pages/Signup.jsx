@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+const eye = <FontAwesomeIcon icon={faEye} />;
 
 export default function Signup(props) {
   const navigate = useNavigate();
-  const { register, control, handleSubmit, formState } = useForm();
+  const { register, control, handleSubmit, formState,watch } = useForm();
   const { errors } = formState;
 
   const onSubmit = async (data) => {
@@ -32,6 +35,11 @@ export default function Signup(props) {
     }
   };
 
+
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
   return (
     <>
       <section className="bg-gray-50 dark:bg-gray-900 h-full ">
@@ -98,14 +106,36 @@ export default function Signup(props) {
                     type="Text"
                     name="username"
                     id="username"
+                    placeholder="XXXXXXXX"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required=""
+                    {...register("rollNo", {
+                      required: "requires Username",
+                      minLength: {value:8,message:" length 8 only"
+                    },
+                    maxLength: {value:8,message:" length 8 only"
+                    }
+                    })}
+                  />
+                  <p className="text-red-500">{errors.rollNo?.message}</p>
+                </div>
+                <div>
+                  <label
+                    htmlFor="username"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Username
+                  </label>
+                  <input
+                    type="Text"
+                    name="username"
+                    id="username"
                     placeholder="Name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
                     {...register("username", {
                       required: "requires Username",
-                      minLength: {value:8,message:" length 8 only"
-                    },
-                    maxLength: {value:8,message:" length 8 only"
+                      minLength: {value:4,message:" length 8 only"
                     }
                     })}
                   />
@@ -119,7 +149,7 @@ export default function Signup(props) {
                     Password
                   </label>
                   <input
-                    type="password"
+                    type={passwordShown ? "text" : "password"}
                     name="password"
                     id="password"
                     placeholder="••••••••"
@@ -130,8 +160,39 @@ export default function Signup(props) {
                     },
                     })}
                   />
+                  <i onClick={togglePasswordVisiblity} className="dark:invert">{eye}</i>{" "}
                   <p className="text-red-500">{errors.password?.message}</p>
                 </div>
+
+                <div>
+                  <label
+                    htmlFor="password"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Confirm Password
+                  </label>
+                  <input
+                    type={passwordShown ? "text" : "password"}
+                    name="confirm-password"
+                    id="confirm-password"
+                    placeholder="••••••••"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    {...register("confirm_password", {
+                      required: "requires password",
+                      minLength: {
+                        value: 8, message: "Min length 8"
+                      },
+                      validate: (val) => {
+                        if (watch('password') !== val) {
+                          return "Your passwords do not match";
+                        }
+                      },
+                    })}
+                  />
+                  <i onClick={togglePasswordVisiblity} className="dark:invert">{eye}</i>{" "}
+                  <p className="text-red-500">{errors.confirm_password?.message}</p>
+                </div>
+
                 <div className="flex items-start">
                   <div className="flex items-center h-5">
                     <input

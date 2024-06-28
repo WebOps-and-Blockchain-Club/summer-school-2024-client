@@ -11,6 +11,7 @@ const Product = (props) => {
         `${process.env.REACT_APP_BACKEND_BASE_URL}/product/${productId}`);
       // console.log(res.data.product); // Log the response for debugging
       setInfo(res.data.product)
+      
       if (res.data.error) {
         props.showAlert(res.data.error, "bad");
         return;
@@ -19,6 +20,9 @@ const Product = (props) => {
     fetchProduct();
   }, [productId]);
 
+  
+  
+  
   
 
   console.log(info);
@@ -48,6 +52,9 @@ const Product = (props) => {
                 <h3 class="text-xl font-bold text-gray-800">Product information</h3>
                 <ul class="mt-4 space-y-6 text-gray-800">
                   <li class="text-sm">{info.description}</li>
+                </ul>
+                <ul class="mt-4 space-y-6 text-gray-800">
+                  <li class="text-sm">Current Owner : {info.user&&info.user.username}</li>
                 </ul>
               </div>
 
