@@ -7,8 +7,39 @@ const Product_upload = () => {
     const { register, handleSubmit, formState,control } = useForm();
     const { errors } = formState;
     const onSubmit = async (data) => {
-        console.log(data);
-    }
+      // Create a FormData object and append the fields from the form
+      const formData = new FormData();
+      Object.keys(data).forEach(key=>{
+        formData.append(key, data[key])
+      })
+  
+      // Assuming you have a file input registered with React Hook Form
+      // and the file input's name is 'image'
+      if (data.image && data.image.length > 0) {
+        formData.append('image', data.image[0]);
+      }
+  
+      try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/product/add`, {
+          method: 'POST',
+          body: formData,
+          headers:{
+            "Authorization":`Bearer ${localStorage.getItem('token')}`
+          }
+        });
+  
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+  
+        const responseData = await response.json();
+        console.log('Success:', responseData);
+        // Handle success scenario
+      } catch (error) {
+        console.error('Error:', error);
+        // Handle error scenario
+      }
+    };
 
 
 
