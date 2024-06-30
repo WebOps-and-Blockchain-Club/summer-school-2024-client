@@ -8,7 +8,7 @@ const Home = () => {
   const redirect=()=>
     navigate("/product")
 
-  // const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
   // token&&(
   //   <Navigate to="/login" replace={true} />
   // )
@@ -42,7 +42,7 @@ const Home = () => {
 
   //   userInfo();
   // }, []);
-
+  console.log(token);
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-3xl font-bold text-center mb-8">Products</h1>

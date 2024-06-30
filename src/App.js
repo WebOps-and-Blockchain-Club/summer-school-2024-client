@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Product from "./pages/product/Product";
+import Product_Upload from "./pages/product/Product_Upload";
+
 
 function App() {
   const [Mode, setMode] = useState("Dark Mode"); //Wther dark mode is enabled or not
@@ -76,7 +78,7 @@ function App() {
               }
             />
           </Route>
-          {/* <Route element={<ProtectedRoute />}> */}
+          <Route element={<ProtectedRoute />}>
           <Route
             exact
             path="/product"
@@ -87,7 +89,19 @@ function App() {
               />
             }
           />
-          {/* </Route> */}
+          </Route>
+          <Route element={<ProtectedRoute />}>
+          <Route
+            exact
+            path="/upload"
+            element={
+              <Product_Upload
+                showAlert={showAlert}
+                toggleMode={toggleMode}
+              />
+            }
+          />
+          </Route>
         </Routes>
       </Router>
     </div>

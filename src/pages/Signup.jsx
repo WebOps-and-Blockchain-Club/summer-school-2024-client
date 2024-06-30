@@ -135,7 +135,7 @@ export default function Signup(props) {
                     required=""
                     {...register("username", {
                       required: "requires Username",
-                      minLength: {value:4,message:" length 8 only"
+                      minLength: {value:4,message:" Min Length 4"
                     }
                     })}
                   />
