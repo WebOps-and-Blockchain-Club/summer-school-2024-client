@@ -16,17 +16,18 @@ const Home = () => {
   useEffect(() => {
     async function fetchProducts() {
       const token = localStorage.getItem("token");
-      const res = await axios.get(
-        `${process.env.REACT_APP_BACKEND_BASE_URL}/products`,
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/products`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      if (res.data.message === "Retrieval successfull!") {
-        setProducts(res.data.products);
-      }
+      if (res.status === 200)
+        {
+          console.log(res.data);
+          setProducts(res.data.products);
+        }
     }
 
     fetchProducts();

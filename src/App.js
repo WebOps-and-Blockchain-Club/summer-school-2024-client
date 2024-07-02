@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -10,6 +10,8 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Product from "./pages/product/Product";
 import Product_Upload from "./pages/product/Product_Upload";
+import Navbar from "./component/Navbar";
+import UserProduct from "./pages/product/UserProduct";
 
 
 function App() {
@@ -39,6 +41,10 @@ function App() {
   return (
     <div id="mode" className="light h-full">
       <Router>
+        <Navbar
+        mode={Mode}
+        toggleMode={toggleMode}
+        />
         <Alert alert={alert} />
         <Routes>
           <Route
@@ -72,8 +78,8 @@ function App() {
               element={
                 <Home
                   showAlert={showAlert}
-                  mode={Mode}
-                  toggleMode={toggleMode}
+                  
+                
                 />
               }
             />
@@ -85,7 +91,7 @@ function App() {
             element={
               <Product
                 showAlert={showAlert}
-                toggleMode={toggleMode}
+                
               />
             }
           />
@@ -97,7 +103,18 @@ function App() {
             element={
               <Product_Upload
                 showAlert={showAlert}
-                toggleMode={toggleMode}
+               
+              />
+            }
+          />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+          <Route
+            exact
+            path="/userproduct"
+            element={
+              <UserProduct
+                showAlert={showAlert}
               />
             }
           />

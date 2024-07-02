@@ -42,7 +42,7 @@ export default function Signup(props) {
   };
   return (
     <>
-      <section className="bg-gray-50 dark:bg-gray-900 h-full ">
+      <section className="bg-gray-50 dark:bg-gray-900 h-fit pt-3">
         <div className="flex flex-col items-center justify-center px-6 py-6 mx-auto md:h-[90%] lg:py-0 ">
           <a
             href="/#"
