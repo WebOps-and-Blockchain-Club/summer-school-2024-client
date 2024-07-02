@@ -9,8 +9,10 @@ const Navbar = (props) => {
       <div className="flex items-center justify-between text-blue-gray-900">
         <Link
           to="/"
-          className="mr-4 block cursor-pointer py-1.5 font-sans text-base font-medium leading-relaxed text-inherit antialiased"
+          className="mr-4 flex cursor-pointer py-1.5 font-sans text-base font-medium leading-relaxed text-inherit antialiased items-center"
         >
+          
+          {props.mode==="Dark Mode"?<img  name='mode' src='logo_light.jpg' className='w-10' alt=''/>:<img  name='mode' src='logo_dark.jpeg' className='w-10' alt=''/>}
           InstiOlx
         </Link>
         <div className="flex items-center gap-4">
