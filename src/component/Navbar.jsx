@@ -38,7 +38,7 @@ const Navbar = (props) => {
             </ul>
           </div>
           <button onClick={props.toggleMode}>
-          {props.mode!=="Dark Mode"?<img size='2xs' name='mode' src='sun.jpg' className='w-7 mix-blend-multiply' alt=''/>:  
+          {props.mode!=="Dark Mode"?<img size='2xs' name='mode' src='sun.jpg' className='w-7 ' alt=''/>:  
           <img size='2xs' name='mode' src='moon.png' className='w-7 mix-blend-multiply' alt=''/>}
           </button>
           <div className="flex items-center gap-x-1">
