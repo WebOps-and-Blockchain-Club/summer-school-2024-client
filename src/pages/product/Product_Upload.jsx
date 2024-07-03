@@ -1,9 +1,10 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
-
+import { useNavigate } from 'react-router-dom';
 
 const Product_upload = (props) => {
+    const navigate = useNavigate();
     const { register, handleSubmit, formState,control } = useForm();
     const { errors } = formState;
     const onSubmit = async (data) => {
@@ -35,6 +36,7 @@ const Product_upload = (props) => {
         const responseData = await response.json();
         console.log('Success:', responseData);
         props.showAlert("Product Uploaded","good")
+        navigate('/')
         // Handle success scenario
       } catch (error) {
         console.error('Error:', error);

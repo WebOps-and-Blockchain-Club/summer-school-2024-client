@@ -4,14 +4,14 @@ export default function Alert(props) {
   if (props.alert === null) {
     return (
       <>
-        <div style={{ height: "25px" }} className="dark:bg-[#111827]"></div>
+        <div style={{ height: "25px" }} className="dark:bg-[#111827]    sticky top-0 z-0"></div>
       </>
     );
   } else {
     if (props.alert.type === "good") {
       return (
         <>
-          <div style={{ height: "30pxpx" }} className="bg-[#111827]">
+          <div style={{ height: "30pxpx" }} className="bg-[#111827] sticky">
             {props.alert && (
               <div>
                 <div
@@ -31,7 +31,7 @@ export default function Alert(props) {
     if (props.alert.type === "bad") {
       return (
         <>
-          <div style={{ height: "25px" }} className="bg-[#111827]">
+          <div style={{ height: "25px" }} className="bg-[#111827] sticky">
             {props.alert && (
               <div>
                 <div

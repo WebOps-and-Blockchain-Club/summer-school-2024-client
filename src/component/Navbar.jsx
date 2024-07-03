@@ -1,10 +1,11 @@
 
 import { Link} from 'react-router-dom'
-import { Avatar} from '@chakra-ui/react' 
+
+import Alert from './Alert'
 
 const Navbar = (props) => {
   return (
-    
+    <div className='sticky top-0 z-10'>
      <nav className="sticky top-0 z-10 block w-full max-w-full px-4 py-2 text-black bg-white border rounded-none shadow-md h-max border-white/80 bg-opacity-80 backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-2 dark:text-white dark:bg-black dark:border-black">
       <div className="flex items-center justify-between text-blue-gray-900">
         <Link
@@ -12,7 +13,8 @@ const Navbar = (props) => {
           className="mr-4 flex cursor-pointer py-1.5 font-sans text-base font-medium leading-relaxed text-inherit antialiased items-center"
         >
           
-          {props.mode==="Dark Mode"?<img  name='mode' src='logo_light.jpg' className='w-10' alt=''/>:<img  name='mode' src='logo_dark.jpeg' className='w-10' alt=''/>}
+          {/* {props.mode==="Dark Mode"?<img  name='mode' src='logo_light.jpg' className='w-10' alt=''/>:<img  name='mode' src='logo_dark.jpeg' className='w-10' alt=''/>} */}
+          <img  name='mode' src='logoo.png' className='w-10' alt=''/>
           InstiOlx
         </Link>
         <div className="flex items-center gap-4">
@@ -80,7 +82,8 @@ const Navbar = (props) => {
         </div>
       </div>
     </nav>
-
+    <Alert alert={props.alert}/>
+    </div>
 
   )
 }

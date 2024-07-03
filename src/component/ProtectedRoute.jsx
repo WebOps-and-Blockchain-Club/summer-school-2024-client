@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
+import Alert from "./Alert";
 
 
-const ProtectedRoute = () => {
+const ProtectedRoute = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -14,7 +16,8 @@ const ProtectedRoute = () => {
   }, [location.pathname]);
 
   return (
-    <>    
+    <>
+  <Navbar toggleMode={props.toggleMode} alert={props.alert}/>  
   <Outlet />
   </>
 );

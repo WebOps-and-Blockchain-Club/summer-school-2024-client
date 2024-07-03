@@ -58,7 +58,8 @@ export default function Login(props) {
             href="/#"
             className="flex items-center mb-2 text-2xl font-semibold text-gray-900 dark:text-white"
           >
-            {props.mode==="Dark Mode"?<img  name='mode' src='logo_light.jpg' className='w-[100px]' alt=''/>:<img  name='mode' src='logo_dark.jpeg' className='w-[100px]' alt=''/>}
+            {/* {props.mode==="Dark Mode"?<img  name='mode' src='logo_light.jpg' className='w-[100px]' alt=''/>:<img  name='mode' src='logo_dark.jpeg' className='w-[100px]' alt=''/>} */}
+            <img  name='mode' src='logoo.png' className='w-[100px]' alt=''/>
           </a>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8 ">
