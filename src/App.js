@@ -14,7 +14,6 @@ import Navbar from "./component/Navbar";
 import UserProduct from "./pages/product/UserProduct";
 import NN from "./component/NN";
 
-
 function App() {
   const [Mode, setMode] = useState("Dark Mode"); //Wther dark mode is enabled or not
   const toggleMode = () => {
@@ -43,82 +42,90 @@ function App() {
     <div id="mode" className="light h-full">
       <Router>
         <Routes>
-        <Route element={<NN 
-                toggleMode={toggleMode} alert={alert} />}>
-          <Route
-            exact
-            path="/signup"
-            element={
-              <Signup
-                showAlert={showAlert}
-                mode={Mode}
-                toggleMode={toggleMode}
-              />
-            }
-          />
-           </Route>
-           <Route element={<NN mode={Mode}
-                toggleMode={toggleMode} alert={alert} />}> 
-          <Route
-            exact
-            path="/login"
-            element={
-              <Login
-                showAlert={showAlert}
-                mode={Mode}
-                toggleMode={toggleMode}
-              />
-            }
-          />
-        </Route>
-          {/* Protected routes */}
-          <Route element={<ProtectedRoute toggleMode={toggleMode} alert={alert} mode={Mode} />}>
+          <Route element={<NN toggleMode={toggleMode} alert={alert} />}>
             <Route
               exact
-              path="/"
+              path="/signup"
               element={
-                <Home
+                <Signup
                   showAlert={showAlert}
-                  
-                
+                  mode={Mode}
+                  toggleMode={toggleMode}
                 />
               }
             />
           </Route>
-          <Route element={<ProtectedRoute toggleMode={toggleMode} alert={alert} mode={Mode} />}>
           <Route
-            exact
-            path="/product"
-            element={
-              <Product
-                showAlert={showAlert}
-                
-              />
-            }
-          />
+            element={<NN mode={Mode} toggleMode={toggleMode} alert={alert} />}
+          >
+            <Route
+              exact
+              path="/login"
+              element={
+                <Login
+                  showAlert={showAlert}
+                  mode={Mode}
+                  toggleMode={toggleMode}
+                />
+              }
+            />
           </Route>
-          <Route element={<ProtectedRoute toggleMode={toggleMode} alert={alert} mode={Mode} />}>
+          {/* Protected routes */}
           <Route
-            exact
-            path="/upload"
             element={
-              <Product_Upload
-                showAlert={showAlert}
-               
+              <ProtectedRoute
+                toggleMode={toggleMode}
+                alert={alert}
+                mode={Mode}
               />
             }
-          />
+          >
+            <Route exact path="/" element={<Home showAlert={showAlert} />} />
           </Route>
-          <Route element={<ProtectedRoute toggleMode={toggleMode} alert={alert} mode={Mode} />}>
           <Route
-            exact
-            path="/userproduct"
             element={
-              <UserProduct
-                showAlert={showAlert}
+              <ProtectedRoute
+                toggleMode={toggleMode}
+                alert={alert}
+                mode={Mode}
               />
             }
-          />
+          >
+            <Route
+              exact
+              path="/product"
+              element={<Product showAlert={showAlert} />}
+            />
+          </Route>
+          <Route
+            element={
+              <ProtectedRoute
+                toggleMode={toggleMode}
+                alert={alert}
+                mode={Mode}
+              />
+            }
+          >
+            <Route
+              exact
+              path="/upload"
+              element={<Product_Upload showAlert={showAlert} />}
+            />
+          </Route>
+          <Route
+            element={
+              <ProtectedRoute
+                toggleMode={toggleMode}
+                alert={alert}
+                mode={Mode}
+              />
+            }
+          >
+            <Route
+              exact
+              path="/userproduct"
+              element={<UserProduct showAlert={showAlert} />}
+            />
           </Route>
         </Routes>
       </Router>
