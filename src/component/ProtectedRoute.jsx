@@ -17,7 +17,7 @@ const ProtectedRoute = (props) => {
 
   return (
     <>
-  <Navbar toggleMode={props.toggleMode} alert={props.alert}/>  
+  <Navbar toggleMode={props.toggleMode} alert={props.alert} mode={props.mode}/>  
   <Outlet />
   </>
 );

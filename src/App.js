@@ -51,6 +51,7 @@ function App() {
             element={
               <Signup
                 showAlert={showAlert}
+                mode={Mode}
                 toggleMode={toggleMode}
               />
             }
@@ -71,7 +72,7 @@ function App() {
           />
         </Route>
           {/* Protected routes */}
-          <Route element={<ProtectedRoute toggleMode={toggleMode} alert={alert} />}>
+          <Route element={<ProtectedRoute toggleMode={toggleMode} alert={alert} mode={Mode} />}>
             <Route
               exact
               path="/"
@@ -84,7 +85,7 @@ function App() {
               }
             />
           </Route>
-          <Route element={<ProtectedRoute toggleMode={toggleMode} alert={alert} />}>
+          <Route element={<ProtectedRoute toggleMode={toggleMode} alert={alert} mode={Mode} />}>
           <Route
             exact
             path="/product"
@@ -96,7 +97,7 @@ function App() {
             }
           />
           </Route>
-          <Route element={<ProtectedRoute toggleMode={toggleMode} alert={alert} />}>
+          <Route element={<ProtectedRoute toggleMode={toggleMode} alert={alert} mode={Mode} />}>
           <Route
             exact
             path="/upload"
@@ -108,7 +109,7 @@ function App() {
             }
           />
           </Route>
-          <Route element={<ProtectedRoute toggleMode={toggleMode} alert={alert} />}>
+          <Route element={<ProtectedRoute toggleMode={toggleMode} alert={alert} mode={Mode} />}>
           <Route
             exact
             path="/userproduct"
