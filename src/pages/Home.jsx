@@ -72,10 +72,10 @@ const Home = () => {
               <strong>Condition:</strong> {product.condition}
             </p>
             <p className="text-gray-600 mb-2">
-              <strong>Cost Price:</strong> ${product.costPrice}
+              <strong>Cost Price:</strong> ₹{product.costPrice}
             </p>
             <p className="text-gray-800 font-bold mb-2">
-              <strong>Selling Price:</strong> ${product.sellingPrice}
+              <strong>Selling Price:</strong> ₹{product.sellingPrice}
             </p>
             <button
               className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300"
