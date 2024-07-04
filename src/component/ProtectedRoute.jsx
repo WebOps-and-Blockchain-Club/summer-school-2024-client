@@ -3,7 +3,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import Alert from "./Alert";
 import Footer from "./Footer";
-import { Navbar} from "./Navbar";
+import Navbar from "./Navbar";
 
 const ProtectedRoute = (props) => {
   const navigate = useNavigate();

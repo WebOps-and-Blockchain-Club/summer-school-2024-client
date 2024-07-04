@@ -58,16 +58,20 @@ const Navbar = (props) => {
                     Home
                   </Link>
                 </li>
-                <li className="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                  <Link to="/upload" className="flex items-center">
-                    Upload
-                  </Link>
-                </li>
-                <li className="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                  <Link to="/userproduct" className="flex items-center">
-                    Your Products
-                  </Link>
-                </li>
+                {loggedIn && (
+                  <>
+                    <li className="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                      <Link to="/upload" className="flex items-center">
+                        Upload
+                      </Link>
+                    </li>
+                    <li className="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                      <Link to="/userproduct" className="flex items-center">
+                        Your Products
+                      </Link>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
             <button onClick={props.toggleMode}>
